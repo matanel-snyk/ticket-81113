@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build and analyze
-    container: oraclelinux:8
+#    container: oraclelinux:8
     runs-on: ubuntu-latest
     steps:
       - name: Install prereqs
