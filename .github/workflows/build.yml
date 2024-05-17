@@ -37,17 +37,30 @@ jobs:
         run: |
           dotnet msbuild -restore ./InsecureProject.sln
           dotnet build ./InsecureProject.sln -m:1
-      - name: Snyk
+      - name: Snyk Test
         uses: snyk/actions/dotnet@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --sarif-file-output=snyk.sarif --all-projects --detection-depth=5
-      - name: Upload result to GitHub Code Scanning
+          command: test
+          args: --sarif-file-output=snyk-test.sarif --all-projects --detection-depth=5
+      - name: Upload Snyk Test to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: snyk.sarif
+          sarif_file: snyk-test.sarif
+      - name: Snyk Code Test
+        uses: snyk/actions/dotnet@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: code test
+          args: --sarif-file-output=snyk-code-test.sarif --all-projects --detection-depth=5
+      - name: Upload Snyk Code Test to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk-code-test.sarif
     permissions:
       pull-requests: write
       contents: write
