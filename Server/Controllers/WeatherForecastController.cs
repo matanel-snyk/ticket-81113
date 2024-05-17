@@ -16,6 +16,7 @@ public class WeatherForecastController : ControllerBase
     {
         _dbContext = dbContext;
         _logger = logger;
+
     }
 
     [HttpGet("{city}")]
