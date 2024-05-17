@@ -11,14 +11,14 @@ jobs:
 #    container: oraclelinux:8
     runs-on: ubuntu-latest
     steps:
-      - name: Install prereqs
-        run: |
-          dnf install -y \
-            jq \
-            git \
-            tar \
-            libicu \
-            curl
+#      - name: Install prereqs
+#        run: |
+#          dnf install -y \
+#            jq \
+#            git \
+#            tar \
+#            libicu \
+#            curl
       - name: Set up .Net 8
         uses: actions/setup-dotnet@v3.2.0
         with:
