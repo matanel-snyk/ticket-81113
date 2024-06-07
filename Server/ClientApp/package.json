@@ -24,7 +24,7 @@
     "@angular/platform-server": "^16.2.12",
     "@angular/router": "^16.2.12",
     "bootstrap": "^5.2.3",
-    "jquery": "^3.6.4",
+    "jquery": "^3.7.1",
     "oidc-client": "^1.11.5",
     "crypto-js": "^4.2.0",
     "popper.js": "^1.16.0",
